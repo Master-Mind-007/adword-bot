@@ -85,7 +85,7 @@ class adTaskHandler:
 		if reply_to_message_id:
 			message_conf['reply_to_message_id'] = reply_to_message_id
 		msg = ""
-        try:
+		try:
 			await app.send_message(**message_conf)
 			if settings['logging'] == "advanced" and debug:
 				msg = f"𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞: {groups[chat_id]['name']}\n𝐓𝐨𝐩𝐢𝐜: {groups[chat_id]['forums'][reply_to_message_id]['name']}" if reply_to_message_id else f"𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞: {groups[chat_id]['name']}"
@@ -101,20 +101,20 @@ class adTaskHandler:
 			return "fail"
 
 
-    async def forwardMsg(self, chat_id, message, sender, reply_to_message_id=False, debug=True):
-        app = self.bot if sender == "bot" else self.user
-        message_conf = {
-        'from_peer': await app.resolve_peer(message.chat.id),
-        'to_peer': await app.resolve_peer(chat_id),
-        'id': [message.id],
-        'random_id': [app.rnd_id()]
-        }
-        try:
-            if reply_to_message_id:
-                message_conf['top_msg_id'] = reply_to_message_id
-        except:
-            pass
-        msg = ""
+	async def forwardMsg(self, chat_id, message, sender, reply_to_message_id=False, debug=True):
+		app = self.bot if sender == "bot" else self.user
+		message_conf = {
+		'from_peer': await app.resolve_peer(message.chat.id),
+		'to_peer': await app.resolve_peer(chat_id),
+		'id': [message.id],
+		'random_id': [app.rnd_id()]
+		}
+		try:
+			if reply_to_message_id:
+			message_conf['top_msg_id'] = reply_to_message_id
+		except:
+			pass
+		msg = ""
 		try:
 			await app.invoke(ForwardMessages(**message_conf))
 			if settings['logging'] == "advanced" and debug::
