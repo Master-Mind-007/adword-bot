@@ -9,7 +9,7 @@ flask
 gevent
 gunicorn
 psutil
-pyrogram==2.0.77
+pyrogram
 python-dotenv
 python-magic
 requests
