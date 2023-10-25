@@ -1,0 +1,46 @@
+##########################################################################################################
+#                                                                                                        #
+#                                             ADWORD BOT                                                 #
+#                                              TUTORIAL                                                  #
+#                                                                                                        #
+##########################################################################################################
+
+
+# STAGE I
+1. Go To @BotFather and Create a new bot using command '/newbot'.
+2. Get your Bot Token from Bot Father
+3. Add your Bot Token in the config.env
+4. Go to https://my.telegram.org/auth and Login with your User TG Account.
+5. Create an application and get your API ID and API HASH.
+6. Add API ID and API HASH in your config.env
+
+
+# STAGE II
+1. Create a new TG Channel for Logging.
+2. After creating channel, add Bot and User Account in the Channel.
+3. Get the channel ID, and add (-100) before it.
+4. Add the ID in LOG_ID.
+
+
+# STAGE III
+1. Extract to your Bot Source Code.
+2. Add your config.env in the Extracted Directory.
+3. Open Terminal in the Extracted Directory.
+4. Run Command 'pip3 install -r requirements.txt', it will install all required packages
+5. Run Command 'python3 -m worker', this will start your bot.
+
+# STAGE IV
+1. After your Bot is Online, open Bot Settings using command '/exportsession'.
+2. Send your API_ID and API_HASH.
+3. Send your Phone Number in format "+1xxxxxxxxxx" ( Add Internation Code )
+4. If you Have Password Send your Password too.
+5. Check Your User Account, It should have the Generate Session String. Save it for USER_SESSION_STRING
+
+
+# STAGE V
+1. After your Bot is Online, open Bot Settings using command '/bs' or '/botsetting'.
+2. Navigate: CONFIGURATION > PAGE 2 > USER_SESSION_STRING > Edit Value
+3. Now send your Generated USER_SESSION_STRING, and it will added in the bot, wait few seconds for bot to login into User Account.
+
+
+# NOW YOUR BOT IS READY TO GO.

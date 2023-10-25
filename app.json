@@ -1,0 +1,5 @@
+{
+  "name": "Deploy",
+  "description": "A template for getting started.",
+  "stack": "container"
+}

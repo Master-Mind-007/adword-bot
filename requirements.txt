@@ -1,0 +1,17 @@
+aiohttp
+aiofiles
+aioshutil
+apscheduler
+asyncio
+bs4
+cloudscraper
+flask
+gevent
+gunicorn
+psutil
+pyrogram==2.0.77
+python-dotenv
+requests
+speedtest-cli
+uvloop
+tgcrypto
