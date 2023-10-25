@@ -11,6 +11,7 @@ gunicorn
 psutil
 pyrogram==2.0.77
 python-dotenv
+python-magic
 requests
 speedtest-cli
 uvloop
