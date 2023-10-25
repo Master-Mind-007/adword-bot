@@ -111,7 +111,7 @@ class adTaskHandler:
 		}
 		try:
 			if reply_to_message_id:
-			message_conf['top_msg_id'] = reply_to_message_id
+				message_conf['top_msg_id'] = reply_to_message_id
 		except:
 			pass
 		msg = ""
