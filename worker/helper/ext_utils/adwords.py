@@ -117,7 +117,7 @@ class adTaskHandler:
 		msg = ""
 		try:
 			await app.invoke(ForwardMessages(**message_conf))
-			if settings['logging'] == "advanced" and debug::
+			if settings['logging'] == "advanced" and debug:
 				msg = f"𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞: {groups[chat_id]['name']}\n𝐓𝐨𝐩𝐢𝐜: {groups[chat_id]['forums'][reply_to_message_id]['name']}" if reply_to_message_id else f"𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞: {groups[chat_id]['name']}"
 				await self.log(f"𝐒𝐮𝐜𝐜𝐞𝐬𝐬! 𝐀𝐝 𝐒𝐞𝐧𝐭!\n𝐀𝐃: {ads[self.ad_id]['name']}\n{msg}\n𝐆𝐫𝐨𝐮𝐩 𝐈𝐃: {chat_id}")
 			LOGGER.info(f"AD: {ads[self.ad_id]['name']} | Sent to {chat_id}!")
