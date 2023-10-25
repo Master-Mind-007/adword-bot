@@ -143,21 +143,13 @@ class adTaskHandler:
 						if ads[self.ad_id]['enabled']:
 							if not group['blocked']:
 								if group['is_forum']:
-									if ads[self.ad_id]['mode'] == 'forward':
-										status = await self.forwardMsg(grp_id, ads[self.ad_id]['msg'], ads[self.ad_id]['sender'])
-										if status == "success":
-											success += 1
-										else:
-											fail += 1
-										await asleep(settings['interval'])
 									for id, topic in list(group['forums'].items()):
 										if id in group['topic']:
-											if ads[self.ad_id]['mode'] == 'send':
-												status = await self.sendMsg(grp_id, ads[self.ad_id]['msg'], ads[self.ad_id]['sender'], ads[self.ad_id]['web_preview'], id)
-												if status == "success":
-													success += 1
-												else:
-													fail += 1
+											status = await self.sendMsg(grp_id, ads[self.ad_id]['msg'], ads[self.ad_id]['sender'], ads[self.ad_id]['web_preview'], reply_to_message_id=id) if ads[self.ad_id]['mode'] == 'send' else await self.forwardMsg(grp_id, ads[self.ad_id]['msg'], ads[self.ad_id]['sender'], reply_to_message_id=id)
+											if status == "success":
+												success += 1
+											else:
+												fail += 1
 											await asleep(settings['interval'])
 									if settings['logging'] == 'normal':
 										await editMessage(message, text=f"𝐒𝐭𝐚𝐭𝐮𝐬: 𝐑𝐮𝐧𝐧𝐢𝐧𝐠!\n𝐀𝐝𝐯𝐞𝐫𝐭𝐢𝐬𝐞𝐦𝐞𝐧𝐭: {ads[self.ad_id]['name']}\n𝐓𝐨𝐭𝐚𝐥 𝐆𝐫𝐨𝐮𝐩𝐬: {total_grp}\n𝐒𝐮𝐜𝐜𝐞𝐬𝐬: {success}\n𝐅𝐚𝐢𝐥𝐞𝐝: {fail}")
