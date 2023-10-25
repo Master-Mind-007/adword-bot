@@ -2,7 +2,7 @@
 
 ######################################################
 # AUTHOR: MIKHIL
-# TELGRAM: @MASTERMIND_MIKHIL @MASTERMIKHIL
+# TELEGRAM: @MASTERMIND_MIKHIL @MASTERMIKHIL
 # PROJECT: ADWORD
 # DISTRIBUTION IS PROHIBITED WITHOUT PREMISSION
 ######################################################
