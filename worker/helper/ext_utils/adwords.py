@@ -67,26 +67,35 @@ class adTaskHandler:
 
 	async def sendMsg(self, chat_id, message, sender, web_preview=False, reply_to_message_id=False, debug=True):
 		app = self.bot if sender == "bot" else self.user
-		message_conf = {
-			'chat_id': chat_id,
-			'disable_web_page_preview': not web_preview
-			}
+		message_conf = {'chat_id': chat_id}
 		try:
 			if message.text:
 				message_conf['text'] = message.text
+			photo = message.photo.file_id if message.photo else ''
 		except:
 			pass
-		if message.caption:
-			message_conf['text'] = message.caption
-		if message.entities:
-			message_conf['entities'] = message.entities
 		if message.reply_markup:
 			message_conf['reply_markup'] = message.reply_markup
 		if reply_to_message_id:
 			message_conf['reply_to_message_id'] = reply_to_message_id
 		msg = ""
 		try:
-			await app.send_message(**message_conf)
+			if photo == '':
+				if message.caption:
+					message_conf['text'] = message.caption
+				if message.entities:
+					message_conf['entities'] = message.entities
+				if web_preview:
+					message_conf['disable_web_page_preview'] = not web_preview
+				await app.send_message(**message_conf)
+			else:
+				if message.caption:
+					message_conf['caption'] = message.caption
+				if message.entities:
+					message_conf['caption_entities'] = message.entities
+				if photo != '':
+					message_conf['photo'] = photo
+				await app.send_photo(**message_conf)
 			if settings['logging'] == "advanced" and debug:
 				msg = f"𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞: {groups[chat_id]['name']}\n𝐓𝐨𝐩𝐢𝐜: {groups[chat_id]['forums'][reply_to_message_id]['name']}" if reply_to_message_id else f"𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞: {groups[chat_id]['name']}"
 				await self.log(f"𝐒𝐮𝐜𝐜𝐞𝐬𝐬! 𝐀𝐝 𝐒𝐞𝐧𝐭!\n𝐀𝐃: {ads[self.ad_id]['name']}\n{msg}\n𝐆𝐫𝐨𝐮𝐩 𝐈𝐃: {chat_id}")
