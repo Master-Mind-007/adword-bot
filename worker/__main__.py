@@ -62,7 +62,12 @@ async def welcome_master():
 	if not await aiopath.isfile(".restartmsg"):
 		msg, btns = await get_stats()
 		text = "𝐀𝐃𝐰𝐨𝐫𝐝 𝐢𝐬 𝐔𝐏!"
-		await sendCustomMsg(chat_id=config_dict['OWNER_ID'], buttons=btns, text=text, photo=COVER_IMAGE)
+		message = await sendCustomMsg(chat_id=config_dict['OWNER_ID'], buttons=btns, text=text, photo=COVER_IMAGE)
+	if True:
+		btns = ButtonMaker()
+		btns.ibutton('TEST!', 'https://example.com')
+		btns.ibutton('Test', 'https://example.com')
+		await editMessage(message, "TEST", buttons=btns, photo=None)
 
 
 async def ping(_, message):
