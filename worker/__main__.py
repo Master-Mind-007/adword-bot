@@ -210,7 +210,7 @@ async def handlex(_, query):
 
 
 async def main():
-	await gather(verifyChannel(bot), start_cleanup(), welcome_master(), restart_notification(), set_commands(bot))
+	await gather(start_cleanup(), welcome_master(), restart_notification(), set_commands(bot))
 	
 	bot.add_handler(MessageHandler(
 		start, filters=command(BotCommands.StartCommand) & private))
